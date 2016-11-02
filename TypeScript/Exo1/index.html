@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liste d'ingrédients</title>
+</head>
+<body>
+	<h1>Ajout d'ingrédient</h1>
+	
+	<label>Nom</label>
+	<input type="text" name="nom" id="inom">
+	<label>Quantité</label>
+	<input type="text" name="Quantite" id="iquantite">
+	<label>Prix</label>
+	<input type="text" name="prix" id="iprix">
+	<button id="btnajout">Ajouter</button>
+
+	<h2>Liste d'ingrédients</h2>
+	<ul id="listeingredients">
+		<li> ingrédient de test</li>
+	</ul>
+<!--Ajout du script-->
+<script>
+//mes variables	
+var recette = [];
+//mes functions
+function updateListeIngredients(){
+	var laliste = document.getElementById("listeingredients");
+	laliste.innerHTML = "";
+	for (element of recette){
+		var monli = document.createElement("li");
+		var node = document.createTextNode(element.nom + " - "+ element.quantite+" - "+element.prix);
+		monli.appendChild(node);
+		laliste.appendChild(monli);
+
+	}
+}
+
+//mes evenements
+document.getElementById("btnajout").addEventListener("click",function(){
+	//alert(document.getElementById("inom").value);
+	//on créé un objet ingrédient
+	var moningredient = {
+		nom : document.getElementById("inom").value,
+		quantite : document.getElementById("iquantite").value,
+		prix : document.getElementById("iprix").value
+	};
+	//on ajoute l'ingrédient dans le tableau
+	recette.push(moningredient);
+	
+	//on raffraichit la liste
+	updateListeIngredients();
+})
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
